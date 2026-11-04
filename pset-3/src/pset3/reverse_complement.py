@@ -1,11 +1,15 @@
-"""Rosalind BA1C: Find the Reverse Complement of a String."""
+def reverseComplement(text) :
+    text_rc = ""
 
+    for i in range(len(text)) :
+        if text[-i-1] == "A" :
+            text_rc = text_rc + "T"
+        elif text[-i-1] == "C" :
+            text_rc = text_rc + "G"
+        elif text[-i-1] == "G" :
+            text_rc = text_rc + "C"
+        elif text[-i-1] == "T" :
+            text_rc = text_rc + "A"
 
-def reverseComplement(text: str) -> str:
-    """Return the reverse complement of an uppercase DNA string.
-
-    A pairs with T, and C pairs with G. Return the complementary
-    nucleotides in reverse order.
-    """
-    # TODO: Implement the reverse complement.
-    raise NotImplementedError("Implement reverseComplement for Rosalind BA1C.")
+    return(text_rc)
+    
