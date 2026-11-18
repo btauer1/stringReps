@@ -1,4 +1,8 @@
-def stringComposition(k: int, text: str) -> list[str]:
-    """Return the k-mer composition of text, including repeated k-mers (BA3A)."""
-    # TODO: Write your code here.
-    raise NotImplementedError("Implement stringComposition")
+def stringComposition(k, text) :
+    
+    Composition = []
+    for i in range(len(text)-k+1):
+    	Composition.append(text[i:(i+k)])
+
+    Composition = sorted(Composition)
+    return(Composition)
