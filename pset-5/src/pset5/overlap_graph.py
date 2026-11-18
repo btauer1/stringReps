@@ -1,8 +1,10 @@
-def overlapGraph(patterns: list[str]) -> list[list[str]]:
-    """Return the overlap graph as rows [source, destination] (BA3C).
+def overlapGraph(patterns) :
+    adjacent = []
+    k = len(patterns[0])
 
-    Each row contains one directed edge, with the source first.
-    Row order does not matter.
-    """
-    # TODO: Write your code here.
-    raise NotImplementedError("Implement overlapGraph")
+    for i in range(len(patterns)) :
+        for j in range(len(patterns)) :
+            if patterns[i][1:k] == patterns[j][0:k-1] :
+                adjacent.append([i,j])
+
+    return(adjacent)
