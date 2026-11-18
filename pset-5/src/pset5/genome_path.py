@@ -1,4 +1,11 @@
-def stringSpelledByGenomePath(patterns: list[str]) -> str:
-    """Return the string spelled by the ordered genome path (BA3B)."""
-    # TODO: Write your code here.
-    raise NotImplementedError("Implement stringSpelledByGenomePath")
+def stringSpelledByGenomePath(patterns) :
+    
+    n = len(patterns)
+    text = ""
+
+    for i in range(n-1) :
+        text = text + patterns[i][0]
+
+    text = text + patterns[n-1]
+
+    return(text)
