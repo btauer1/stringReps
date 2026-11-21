@@ -57,6 +57,4 @@ def frequentWordsWithMismatchesAndReverseComplements(text: str, k: int, d: int) 
         if counts[p] == max:
             freqWords.add(p)
     
-    freqWords = sorted(freqWords)
-
     return freqWords
