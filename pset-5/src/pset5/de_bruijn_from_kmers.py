@@ -1,8 +1,10 @@
-def deBruijnFromKmers(patterns: list[str]) -> list[list[str]]:
-    """Return the de Bruijn graph of the k-mers as rows [source, destination] (BA3E).
+def deBruijnFromKmers(patterns) :
 
-    Each row contains one directed edge, with the source first.
-    Row order does not matter. Preserve duplicate rows for parallel edges.
-    """
-    # TODO: Write your code here.
-    raise NotImplementedError("Implement deBruijnFromKmers")
+    patterns = sorted(patterns)
+    k = len(patterns[0])
+    deBruijn = []
+
+    for i in patterns :
+        deBruijn.append([i[0:k-1], i[1:k]])
+
+    return(deBruijn)
