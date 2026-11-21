@@ -31,11 +31,22 @@ def reverseComplement(text) :
     return(text_rc)
 
 def frequentWordsWithMismatchesAndReverseComplements(text: str, k: int, d: int) -> set[str]:
+    nucs = ["A", "C", "G", "T"]
+    temp = ["A", "C", "G", "T"]
+    temp_2 = []
+
+    while len(temp[1])<k :
+        for i in range(len(temp)):
+            for j in nucs:
+                temp_2.append(temp[i] + j)
+        temp = temp_2
+        temp_2 = []
+
     counts = {}
     max = 0
 
-    for i in range(len(text)-k+1):
-        pattern = text[i:i+k]
+    for i in temp:
+        pattern = i
         pattern_rc = reverseComplement(pattern)
         counts[pattern]= PatternCount_approx(text, pattern, d) + PatternCount_approx(text, pattern_rc, d) 
         if counts[pattern] > max:
@@ -46,4 +57,6 @@ def frequentWordsWithMismatchesAndReverseComplements(text: str, k: int, d: int) 
         if counts[p] == max:
             freqWords.add(p)
     
+    freqWords = sorted(freqWords)
+
     return freqWords

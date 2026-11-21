@@ -16,10 +16,7 @@ def PatternCount_approx(text, pattern, d) :
     return count
 
 def frequentWordsWithMismatches(text, k, d) :
-    nucs = ["A", "C", "G", "T"]
-    k_list = []
-    num_list = []
-    
+    nucs = ["A", "C", "G", "T"]    
     temp = ["A", "C", "G", "T"]
     temp_2 = []
 
@@ -43,5 +40,7 @@ def frequentWordsWithMismatches(text, k, d) :
     for p in counts:
         if counts[p] == max:
             freqWords.add(p)
+
+    freqWords = sorted(freqWords)
     
     return freqWords
