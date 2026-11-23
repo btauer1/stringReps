@@ -1,12 +1,21 @@
-"""Rosalind BA1E: Find Patterns Forming Clumps in a String."""
+def X_FrequentWords(text, k, x) :
+    words = {}
+    for i in range(len(text)-k+1) :
+        if text[i:(i+k)] in words :
+            words[text[i:(i+k)]] = words[text[i:(i+k)]] + 1
+        else :
+            words[text[i:(i+k)]] = 1
+    x_maxwords = []
+    for key, value in words.items() :
+        if value >= x :
+            x_maxwords.append(key)
+    return(x_maxwords)
 
-
-def findClumps(genome: str, k: int, L: int, t: int) -> set[str]:
-    """Return distinct k-mers appearing at least t times in any length-L window.
-
-    Count overlapping occurrences fully contained within each window.
-    Assume uppercase DNA, 1 <= k <= L <= len(genome), and t >= 1.
-    Each qualifying k-mer appears only once in the returned set.
-    """
-    # TODO: Implement clump finding.
-    raise NotImplementedError("Implement findClumps for Rosalind BA1E.")
+def findClumps(genome, k, L, t) :
+    kmers = []
+    for j in range(len(genome)-L+1) :
+        list_a = X_FrequentWords(genome[j:(j+L)], k, t)
+        for x in range(len(list_a)) :
+            if list_a[x] not in kmers :
+                kmers.append(list_a[x])
+    return kmers

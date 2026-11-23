@@ -1,11 +1,27 @@
-"""Rosalind BA1K: Generate the Frequency Array of a String."""
+def PatternCount(text, pattern) :
+    count = 0
+    for i in range(len(text)-len(pattern)+1) :
+        if text[i:(i+len(pattern))] == pattern :
+            count = count + 1
+    return count
 
 
-def frequencyArray(text: str, k: int) -> list[int]:
-    """Return counts for all 4**k DNA k-mers in lexicographic order.
+def frequencyArray(text, k) :
+    nucs = ["A", "C", "G", "T"]
+    k_list = []
+    num_list = []
+    
+    temp = ["A", "C", "G", "T"]
+    temp_2 = []
 
-    Use alphabet order A, C, G, T. Include zero counts and count
-    overlapping occurrences. Assume uppercase DNA and 1 <= k <= len(text).
-    """
-    # TODO: Implement the frequency array.
-    raise NotImplementedError("Implement frequencyArray for Rosalind BA1K.")
+    while len(temp[1])<k :
+        for i in range(len(temp)):
+            for j in nucs:
+                temp_2.append(temp[i] + j)
+        temp = temp_2
+        temp_2 = []
+
+    for i in temp :
+        num_list.append(PatternCount(text, i))
+
+    return(num_list)

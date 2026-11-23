@@ -1,8 +1,18 @@
-def deBruijnFromString(k: int, text: str) -> list[list[str]]:
-    """Return the de Bruijn graph of text as rows [source, destination] (BA3D).
+def stringComposition(k, text) :
+    
+    Composition = []
+    for i in range(len(text)-k+1):
+    	Composition.append(text[i:(i+k)])
 
-    Each row contains one directed edge, with the source first.
-    Row order does not matter. Preserve duplicate rows for parallel edges.
-    """
-    # TODO: Write your code here.
-    raise NotImplementedError("Implement deBruijnFromString")
+    Composition = sorted(Composition)
+    return(Composition)
+
+def deBruijnFromString(k, text) :
+
+    compostion = stringComposition(k, text)
+    deBruijn = []
+
+    for i in compostion :
+        deBruijn.append([i[0:k-1], i[1:k]])
+
+    return(deBruijn)
